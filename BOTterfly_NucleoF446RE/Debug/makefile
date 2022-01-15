@@ -17,6 +17,7 @@ RM := rm -rf
 -include Drivers/VL53L0X_API/core/src/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
+-include Core/Src/BOTterfly-C/Motors/subdir.mk
 -include Core/Src/BOTterfly-C/subdir.mk
 -include Core/Src/subdir.mk
 -include subdir.mk

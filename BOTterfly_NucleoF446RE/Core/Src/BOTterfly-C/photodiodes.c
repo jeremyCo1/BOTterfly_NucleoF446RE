@@ -106,9 +106,9 @@ uint8_t Ph_Treatment(uint32_t value[])
 	//char * PrPrintf[50];
 	uint32_t Ph_PourPrintf[4] = {value[0], value[1], value[2], value[3]};
 
-	if (1)
+	if (0)
 	{
-		for (int i = 0 ; i < 3 ; i++)
+		for (int i = 0 ; i < 4 ; i++)
 		{
 			if ((value[i] - Ph_DataNoise[i] > 0) && (value[i] - Ph_DataNoise[i] < 4096))
 			{
@@ -298,21 +298,23 @@ int Ph_GetBestAngleAncien(uint32_t value[])
 int Ph_GetNorma(uint32_t value[])
 {
 	//Ph_Norma = 100 - (0.9*value[0] + 1.2*value[1] + 0.9*value[2])/(3*40.95);
-	uint32_t Ph_DataTemp[3];
+	// Il ne faut pas soustraire le bruit car la mesure a déjà subit un traitement !
+	/*uint32_t Ph_DataTemp[3];
 	for (int i = 0 ; i < 3 ; i++)
 	{
 		Ph_DataTemp[i] = value[i] - Ph_DataNoise[i];
-	}
+	}*/
 	int max = 0;
 	for (int i = 1 ; i < 3 ; i++)
 	{
-		if (Ph_DataTemp[i] > Ph_DataTemp[max])
+		if (/*Ph_DataTemp*/value[i] > /*Ph_DataTemp*/value[max])
 		{
 			max = i;
 		}
 	}
-	Ph_Max_Tr = Ph_DataTemp[max];
-	Ph_Norma = (uint32_t)(4791.6*exp(-0.001*value[max]));
+	Ph_Max_Tr = /*Ph_DataTemp*/value[max];
+	//Ph_Norma = (uint32_t)(4791.6*exp(-0.001*value[max]));
+	Ph_Norma = -134.5 * log(Ph_Max_Tr) + 1135.5;
 	return Ph_Norma;
 }
 

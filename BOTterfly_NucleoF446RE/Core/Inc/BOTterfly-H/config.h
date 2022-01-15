@@ -13,7 +13,6 @@
 #include "photodiodes.h"
 #include "direction.h"
 
-
 /* TOF SENSORS */
 
 struct VL53L0X_Dev_t TOF_Sensor[TOF_nbOfSensor];

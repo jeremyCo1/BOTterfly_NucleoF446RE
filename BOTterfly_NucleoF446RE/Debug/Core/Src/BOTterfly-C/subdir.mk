@@ -5,16 +5,19 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/BOTterfly-C/direction.c \
 ../Core/Src/BOTterfly-C/photodiodes.c \
 ../Core/Src/BOTterfly-C/rgb_sensor.c \
 ../Core/Src/BOTterfly-C/tof_sensor.c 
 
 OBJS += \
+./Core/Src/BOTterfly-C/direction.o \
 ./Core/Src/BOTterfly-C/photodiodes.o \
 ./Core/Src/BOTterfly-C/rgb_sensor.o \
 ./Core/Src/BOTterfly-C/tof_sensor.o 
 
 C_DEPS += \
+./Core/Src/BOTterfly-C/direction.d \
 ./Core/Src/BOTterfly-C/photodiodes.d \
 ./Core/Src/BOTterfly-C/rgb_sensor.d \
 ./Core/Src/BOTterfly-C/tof_sensor.d 
